@@ -9,6 +9,6 @@ app.controller('SearchController', ['$scope', 'gifCall', '$location', function($
 
 
 app.controller('GameController', ['$scope', 'gifCall', function($scope, gifCall){
-  $scope.gifs = gifCall.gifArray
-  console.log($scope.gifs.images.downsized.url);
+  $scope.gifs = gifCall.gifArray;
+  console.log($scope.gifs);
 }])

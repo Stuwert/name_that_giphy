@@ -27,8 +27,13 @@ router.get('/gif/:searchTerm', function(req, res, next) {
   }
 
   Promise.all(promeesies).then(function(results){
-    results.forEach(function(item){
-      rezults.push(item.body)
+    console.log(results);
+    results.forEach(function(item, i){
+      if(i !== 0){
+        rezults.push({image: item.body.data.image_url})
+      }else{
+        rezults.push({image: item.body.data[0].images.downsized.url})
+      }
     })
     res.json(rezults);
   }, function(reject){
