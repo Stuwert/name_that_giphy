@@ -19,10 +19,11 @@ app.controller('GameController', ['$scope', 'gifCall', function($scope, gifCall)
   }
 
   $scope.checkAnswer = function(){
-    if($scope.gifs[$scope.isSelcted].answer){
-      
+    if ($scope.gifs[$scope.isSelected].answer){
+      gameService.incrementScore();
+    }else{
+      gameService.resetScore();
     }
-    console.log($scope.gifs[$scope.isSelected].answer);
+    $location.path('/')
   }
-
 }])
