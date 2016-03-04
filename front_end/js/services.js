@@ -15,7 +15,17 @@ app.service('gifCall', ['$http', function($http){
 }])
 
 
-app.service()
+app.service('gameService', function(){
+  this.score = 0;
+  var that = this;
+  this.incrementScore = function(){
+    that.score++;
+  }
+  this.resetScore = function(){
+    that.score = 0;
+  }
+})
+
 
 // app.service('userCall', [function()])
 //
