@@ -1,6 +1,6 @@
-var app = angular.module('guessdagiph', ['ngRoute'])
+var app = angular.module('guessdagiph', ['ngRoute', 'ngResource'])
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $locationProvider){
   $routeProvider
     .when('/', {
       templateUrl: 'views/giphsearch.html',
@@ -10,4 +10,5 @@ app.config(function($routeProvider){
       templateUrl: 'views/game.html',
       controller: 'GameController'
     })
+    $locationProvider.html5Mode(true);
 })
