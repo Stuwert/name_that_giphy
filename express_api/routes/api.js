@@ -27,7 +27,6 @@ router.get('/gif/:searchTerm', function(req, res, next) {
   }
 
   Promise.all(promeesies).then(function(results){
-    console.log(results);
     results.forEach(function(item, i){
       if(i !== 0){
         rezults.push({image: item.body.data.image_url})
@@ -37,8 +36,8 @@ router.get('/gif/:searchTerm', function(req, res, next) {
     })
     res.json(rezults);
   }, function(reject){
-    console.log(reject)
   })
 });
+
 
 module.exports = router;
