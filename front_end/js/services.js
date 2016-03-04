@@ -15,6 +15,8 @@ app.service('gifCall', ['$http', function($http){
 }])
 
 
+app.service()
+
 // app.service('userCall', [function()])
 //
 // app.service('leaderCall', [function()])
