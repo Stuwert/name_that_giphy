@@ -11,4 +11,15 @@ app.controller('SearchController', ['$scope', 'gifCall', '$location', function($
 app.controller('GameController', ['$scope', 'gifCall', function($scope, gifCall){
   $scope.gifs = gifCall.gifArray;
   console.log($scope.gifs);
+
+  $scope.isSelected;
+
+  $scope.toggleSelected = function(item){
+    $scope.isSelected = item;
+  }
+
+  $scope.checkAnswer = function(){
+    console.log($scope.gifs[$scope.isSelected].answer);
+  }
+
 }])
