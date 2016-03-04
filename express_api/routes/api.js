@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
 var Promise = require('bluebird');
+
+Array.prototype.randomized = require('../misc/arrayrandomizer');
+
 /* GET home page. */
 
 router.get('/gif/:searchTerm', function(req, res, next) {
@@ -29,13 +32,14 @@ router.get('/gif/:searchTerm', function(req, res, next) {
   Promise.all(promeesies).then(function(results){
     results.forEach(function(item, i){
       if(i !== 0){
-        rezults.push({image: item.body.data.image_url})
+        rezults.push({answer: false, image: item.body.data.image_url})
       }else{
-        rezults.push({image: item.body.data[0].images.downsized.url})
+        rezults.push({answer: true, image: item.body.data[0].images.downsized.url})
       }
     })
-    res.json(rezults);
+    res.json(rezults.randomized());
   }, function(reject){
+    console.log(reject);
   })
 });
 
