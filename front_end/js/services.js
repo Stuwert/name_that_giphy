@@ -4,8 +4,8 @@ app.service('gifCall', ['$http', function($http){
   var that = this;
   this.gifArray = [];
   this.searchForAGif = function(searchTerm){
-    // return $http.get('https://namethatgiphyapi.herokuapp.com/api/gif/' + searchTerm)
-    return $http.get('http://localhost:3000/api/gif/' + searchTerm)
+    return $http.get('https://namethatgiphyapi.herokuapp.com/api/gif/' + searchTerm)
+    // return $http.get('http://localhost:3000/api/gif/' + searchTerm)
   }
 
   this.setGifs = function(arr){
@@ -25,7 +25,7 @@ app.service('gameService', function(){
     that.score = 0;
   }
   this.wordsUsed = [];
-  
+
   this.addWord = function(word){
     this.wordsUsed.push(word);
   }
