@@ -24,6 +24,22 @@ app.service('gameService', function(){
   this.resetScore = function(){
     that.score = 0;
   }
+  this.wordsUsed = [];
+  
+  this.addWord = function(word){
+    this.wordsUsed.push(word);
+  }
+
+  this.hasWord = function(word){
+    var bool = false;
+    that.wordsUsed.forEach(function(item){
+      if (item === word){
+        bool = true;
+      }
+    })
+    return bool;
+  }
+
 })
 
 

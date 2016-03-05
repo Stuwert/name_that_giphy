@@ -1,9 +1,14 @@
 app.controller('SearchController', ['$scope', 'gifCall', '$location', 'gameService', function($scope, gifCall, $location, gameService){
   $scope.searchForAGif = function(){
-    gifCall.searchForAGif($scope.searchTerm).then(function(payload){
-      gifCall.setGifs(payload.data);
-      $location.path('/game')
-    });
+    if(gameService.hasWord($scope.searchTerm)){
+      alert("Don't game the system mammajama.")
+    }else{
+      gameService.addWord($scope.searchTerm);
+      gifCall.searchForAGif($scope.searchTerm).then(function(payload){
+        gifCall.setGifs(payload.data);
+        $location.path('/game')
+      });
+    }
   }
   $scope.score = gameService.score;
 }])
