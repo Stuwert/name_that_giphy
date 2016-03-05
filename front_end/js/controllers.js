@@ -28,13 +28,18 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
     if ($scope.gifs[$scope.isSelected].answer){
       alert("Correct!")
       gameService.incrementScore();
+      $location.path('/')
     }else{
       alert('You Fail!')
-      gameService.resetScore();
+      $location.path('/gameover')
     }
-    $location.path('/')
   }
 }])
 
 
-app.controller('GameOverController', ['$scope', function($scope, )])
+app.controller('GameOverController',  ['$scope', 'gameService', function($scope, gameService){
+ $scope.showSignUp = function(){
+   return 'views/options/signmeup.html'
+ }
+
+}])
