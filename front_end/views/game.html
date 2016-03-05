@@ -1,6 +1,12 @@
-<div class="">
+<div>
   <h1> Hi there!</h1>
-  <div ng-repeat='gif in gifs'>
-    <img ng-src="{{gif.image}}" alt="" />  
+  <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}}" ng-click='toggleSelected($index)' >
+    <img ng-src="{{gif.image}}" width='160' alt="" />
   </div>
 </div>
+
+<p>
+  Score: {{score}}
+</p>
+
+<button type="button" name="button" ng-click='checkAnswer()'>Select</button>

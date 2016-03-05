@@ -1,0 +1,19 @@
+.answer{
+  float: left;
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: none;
+}
+
+.selected{
+  background-color: purple;
+}
+
+.container{
+  height: 500px;
+  width: 500px;
+}
