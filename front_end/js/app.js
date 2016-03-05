@@ -10,5 +10,9 @@ app.config(function($routeProvider, $locationProvider){
       templateUrl: 'views/game.html',
       controller: 'GameController'
     })
+    .when('/gameover', {
+      templateUrl: 'views/gameover.html',
+      controller: 'GameOverController'
+    })
     $locationProvider.html5Mode(true);
 })

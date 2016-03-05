@@ -12,3 +12,6 @@ app.controller('GameController', ['$scope', 'gifCall', function($scope, gifCall)
   $scope.gifs = gifCall.gifArray;
   console.log($scope.gifs);
 }])
+
+
+app.controller('GameOverController', ['$scope', function($scope, )])
