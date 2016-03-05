@@ -48,21 +48,27 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
   $scope.createUser = function(){
     userService.createUser($scope.newUser).then(function(response){
       if(response.status === 200){
+        localStorage.setItem('giphyRunToken', response.data.token)
         $location.path('/users/' + $scope.newUser.username)
-        $scope.user = $scope.newUser;
       }
     })
   }
   $scope.signIn = function(){
     userService.signIn($scope.user).then(function(response){
       if(response.status === 200){
+        localStorage.setItem('giphyRunToken', response.data.token);
         $location.path('/users/' + $scope.user.username);
       }
     })
   }
+ }])
 
-  userService.getScore($routeParams.username).then(function(response){
-    $scope.scores = response.data;
-  })
-
+ app.controller('UserInfoController', ['$scope', '$location', '$routeParams', 'userService', function($scope, $location,$routeParams, userService){
+   userService.getInfo($routeParams.username).then(function(response){
+     if (response !== 200){
+       $location.path('/signup')
+     }else{
+       $scope.scores = response.data
+     }
+   })
  }])

@@ -24,7 +24,7 @@ app.config(function($routeProvider, $locationProvider){
     })
     .when('/users/:username', {
       templateUrl: 'views/user.html',
-      controller: 'UserController'
+      controller: 'UserInfoController'
     })
     $locationProvider.html5Mode(true);
 })

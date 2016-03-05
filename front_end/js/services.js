@@ -54,8 +54,10 @@ app.service('userService', ['$http', function($http){
     return $http.post(myLocal + '/users/signup', data)
   }
 
-  this.getScore = function(user){
-    return $http.get(myLocal + '/userinfo/' + user)
+  this.getInfo = function(username){
+    var token = localStorage.getItem('giphyRunToken');
+    console.log(token);
+    return $http.get(myLocal + '/userinfo/' + username, {headers: {token: token}})
   }
 
 }])

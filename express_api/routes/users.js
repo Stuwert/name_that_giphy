@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
 var knex = require('../db/knex');
+var jwt = require('jsonwebtoken');
 
 
 var Users = function(){
@@ -10,12 +11,14 @@ var Users = function(){
 
 router.post('/signup', function(req, res, next){
   var hash = bcrypt.hashSync(req.body.password, 10)
+  var token = jwt.sign(req.body.username, 'giphyrulez');
   Users().insert({
     username: req.body.username,
     password: hash,
-    email: req.body.email
-  }).returning('id').then(function(id){
-    res.cookie('giphChallengeUserId', id).send('Cookie is set!');
+    email: req.body.email,
+    JWT: token
+  }).returning('JWT').then(function(JWT){
+    res.json({token: JWT, message: 'successful'})
   })
 })
 
@@ -23,16 +26,25 @@ router.post('/signup', function(req, res, next){
 router.post('/signin', function(req, res, next){
   Users().where('username', req.body.username).first().then(function(result){
     if(result && bcrypt.compareSync(req.body.password, result.password)){
-      res.cookie('giphChallengeUserId', result.id).send('Cookie is set!');
-      console.log(req.cookies);
+      res.json({
+        token: result.JWT,
+        message: 'Success!',
+      })
     }
     else{
-      res.send('YOU FAIL!')
+      res.json({message: 'Fail!'})
     }
   })
 })
 
+function getToken(token){
+  jwt.verify(token, 'giphyrocks', {}, verifyToken);
 
+  function verifyToken (err, decoded){
+    console.log(err);
+    console.log(decoded);
+  }
+}
 
 
 

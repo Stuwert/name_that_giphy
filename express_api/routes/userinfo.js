@@ -1,16 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex')
+var jwt = require('jsonwebtoken')
 
 
-// router.use(function(req, res, next){
-//   if(req.params.user_id === req.cookies.id){
-//     next()
-//   }
-//   else{
-//     res.send("NOT ALLOWED!");
-//   }
-// })
+router.use('/:username', function(req, res, next){
+  console.log(req.params);
+  console.log("It hit");
+  console.log(req.headers);
+  var verification = jwt.verify(req.header.token, 'giphyrulez');
+  //If token username === username, next, else, send back error.
+
+  // console.log(verification);
+  // if(req.params.user_id === req.cookies.id){
+  //   next()
+  // }
+  // else{
+  //   res.send("NOT ALLOWED!");
+  // }
+})
 
 router.get('/:username', function(req, res, next){
   console.log("Nailed it!");
