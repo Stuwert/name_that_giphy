@@ -1,11 +1,13 @@
 //this is our inital express api call
+var myLocal = 'http://localhost:3000'
+// var location = 'https://namethatgiphyapi.herokuapp.com'
+
 
 app.service('gifCall', ['$http', function($http){
   var that = this;
   this.gifArray = [];
   this.searchForAGif = function(searchTerm){
-    // return $http.get('https://namethatgiphyapi.herokuapp.com/api/gif/' + searchTerm)
-    return $http.get('http://localhost:3000/api/gif/' + searchTerm)
+    return $http.get(myLocal + "/api/gif/" + searchTerm)
   }
 
   this.setGifs = function(arr){
@@ -43,5 +45,17 @@ app.service('gameService', function(){
 })
 
 app.service('userService', ['$http', function($http){
-  
+
+  this.signIn = function(data){
+    return $http.post(myLocal + '/users/signin', data)
+  }
+
+  this.createUser = function(data){
+    return $http.post(myLocal + '/users/signup', data)
+  }
+
+  this.getScore = function(user){
+    return $http.get(myLocal + '/userinfo/' + user)
+  }
+
 }])

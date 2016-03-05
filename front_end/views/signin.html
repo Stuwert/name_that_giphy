@@ -1,7 +1,7 @@
-<form ng-submit='user.$valid && createUser()' name='user' novalidate>
+<form ng-submit='user.$valid && signIn()' name='user' novalidate>
   <label for="username">Username</label>
   <input type="text" placeholder="Enter username" ng-model='user.username' id='username' required>
   <label for="password">Password</label>
   <input type="password" placeholder="Enter password" ng-model='user.password' id='password' required>
-  <button type='submit'>Sign Up</button>
+  <button type='submit'>Sign In</button>
 </form>

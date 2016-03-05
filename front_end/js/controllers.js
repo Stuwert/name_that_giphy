@@ -44,8 +44,25 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
 
  }])
 
- app.controller('UserController',  ['$scope', 'userService', function($scope, userService ){
-
+ app.controller('UserController',  ['$scope', 'userService', '$location', '$routeParams', function($scope, userService, $location, $routeParams ){
+  $scope.createUser = function(){
+    userService.createUser($scope.newUser).then(function(response){
+      if(response.status === 200){
+        $location.path('/users/' + $scope.newUser.username)
+        $scope.user = $scope.newUser;
+      }
+    })
   }
+  $scope.signIn = function(){
+    userService.signIn($scope.user).then(function(response){
+      if(response.status === 200){
+        $location.path('/users/' + $scope.user.username);
+      }
+    })
+  }
+
+  userService.getScore($routeParams.username).then(function(response){
+    $scope.scores = response.data;
+  })
 
  }])
