@@ -42,4 +42,10 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
    return 'views/options/signmeup.html'
  }
 
-}])
+ }])
+
+ app.controller('UserController',  ['$scope', 'userService', function($scope, userService ){
+
+  }
+
+ }])

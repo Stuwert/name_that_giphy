@@ -14,5 +14,13 @@ app.config(function($routeProvider, $locationProvider){
       templateUrl: 'views/gameover.html',
       controller: 'GameOverController'
     })
+    .when('/signin', {
+      templateUrl: 'views/signin.html',
+      controller: 'UserController'
+    })
+    .when('/signup', {
+      templateUrl: 'views/signup.html',
+      controller: 'UserController'
+    })
     $locationProvider.html5Mode(true);
 })

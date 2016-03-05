@@ -42,7 +42,6 @@ app.service('gameService', function(){
 
 })
 
-
-// app.service('userCall', [function()])
-//
-// app.service('leaderCall', [function()])
+app.service('userService', ['$http', function($http){
+  
+}])
