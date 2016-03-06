@@ -56,8 +56,7 @@ app.service('userService', ['$http', function($http){
 
   this.getInfo = function(username){
     var token = localStorage.getItem('giphyRunToken');
-    console.log(token);
-    return $http.get(myLocal + '/userinfo/' + username, {headers: {token: token}})
+    return $http.get(myLocal + '/userinfo/' + username, {headers: {'token': token}})
   }
 
 }])

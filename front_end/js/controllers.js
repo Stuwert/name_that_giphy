@@ -65,10 +65,8 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
 
  app.controller('UserInfoController', ['$scope', '$location', '$routeParams', 'userService', function($scope, $location,$routeParams, userService){
    userService.getInfo($routeParams.username).then(function(response){
-     if (response !== 200){
-       $location.path('/signup')
-     }else{
-       $scope.scores = response.data
-     }
+      $scope.scores = response.data
+   }, function(response){
+     $location.path('/signup')
    })
  }])
