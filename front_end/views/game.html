@@ -1,5 +1,5 @@
 <div>
-  <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}}" ng-click='toggleSelected($index)' >
+  <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}}" ng-dblclick='toggleSelected($index)' ng-mouseover="toggleSelected($index)" ng-mouseleave="!toggleSelected($index)" >
     <img ng-src="{{gif.image}}" width='160' alt="" />
   </div>
 </div>
