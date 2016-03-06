@@ -1,5 +1,4 @@
 <div>
-  <h1> Hi there!</h1>
   <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}}" ng-click='toggleSelected($index)' >
     <img ng-src="{{gif.image}}" width='160' alt="" />
   </div>
