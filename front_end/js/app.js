@@ -26,5 +26,9 @@ app.config(function($routeProvider, $locationProvider){
       templateUrl: 'views/user.html',
       controller: 'UserInfoController'
     })
+    .when('/logout', {
+      templateUrl: 'views/loggedout.html',
+      controller: 'LogOutController'
+    })
     $locationProvider.html5Mode(true);
 })

@@ -5,10 +5,10 @@
     <title>Consumer app</title>
     <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body>
+  <body ng-controller='ParentController'>
     <base href='/'>
     <h1>Welcome to Guess the Giph</h1>
-
+    <a ng-show='isLoggedIn' href="/logout">Log Out</a>
 
    <div class='container' ng-view></div>
 

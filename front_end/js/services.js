@@ -17,7 +17,7 @@ app.service('gifCall', ['$http', function($http){
 }])
 
 
-app.service('gameService', function(){
+app.service('gameService', ['$http', function($http){
   this.score = 0;
   var that = this;
   this.incrementScore = function(){
@@ -31,6 +31,9 @@ app.service('gameService', function(){
   this.addWord = function(word){
     this.wordsUsed.push(word);
   }
+  this.clearWordsUsed = function(){
+    that.wordsUsed = [];
+  }
 
   this.hasWord = function(word){
     var bool = false;
@@ -42,7 +45,12 @@ app.service('gameService', function(){
     return bool;
   }
 
-})
+  this.setScore = function(username){
+    var token = localStorage.getItem('giphyRunToken');
+    return $http.post(myLocal + '/userinfo/' + username, {'score' : that.score}, {headers: {'token': token }})
+  }
+
+}])
 
 app.service('userService', ['$http', function($http){
 
