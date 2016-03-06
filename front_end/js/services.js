@@ -1,13 +1,13 @@
 //this is our inital express api call
-// var myLocal = 'http://localhost:3000'
-var myLocal = 'https://namethatgiphyapi.herokuapp.com'
+// var theCall = 'http://localhost:3000'
+var theCall = 'https://namethatgiphyapi.herokuapp.com'
 
 
 app.service('gifCall', ['$http', function($http){
   var that = this;
   this.gifArray = [];
   this.searchForAGif = function(searchTerm){
-    return $http.get(myLocal + "/api/gif/" + searchTerm)
+    return $http.get(theCall + "/api/gif/" + searchTerm)
   }
 
   this.setGifs = function(arr){
@@ -47,7 +47,7 @@ app.service('gameService', ['$http', function($http){
 
   this.setScore = function(username){
     var token = localStorage.getItem('giphyRunToken');
-    return $http.post(myLocal + '/userinfo/' + username, {'score' : that.score}, {headers: {'token': token }})
+    return $http.post(theCall + '/userinfo/' + username, {'score' : that.score}, {headers: {'token': token }})
   }
 
 }])
@@ -55,16 +55,16 @@ app.service('gameService', ['$http', function($http){
 app.service('userService', ['$http', function($http){
 
   this.signIn = function(data){
-    return $http.post(myLocal + '/users/signin', data)
+    return $http.post(theCall + '/users/signin', data)
   }
 
   this.createUser = function(data){
-    return $http.post(myLocal + '/users/signup', data)
+    return $http.post(theCall + '/users/signup', data)
   }
 
   this.getInfo = function(username){
     var token = localStorage.getItem('giphyRunToken');
-    return $http.get(myLocal + '/userinfo/' + username, {headers: {'token': token}})
+    return $http.get(theCall + '/userinfo/' + username, {headers: {'token': token}})
   }
 
 }])
