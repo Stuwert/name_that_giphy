@@ -14,7 +14,7 @@ router.get('/:username', function(req, res, next){
 })
 
 router.get('/:username', function(req, res, next){
-  knex.from('users').join('scores', 'users.id', 'scores.user_id').where('users.username', req.params.username).column('score').then(function(response){
+  knex.from('users').join('scores', 'users.id', 'scores.user_id').where('users.username', req.params.username).column('score').orderBy('score', 'desc').then(function(response){
     res.json(response);
   })
 })
