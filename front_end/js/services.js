@@ -1,6 +1,6 @@
 //this is our inital express api call
-var myLocal = 'http://localhost:3000'
-// var location = 'https://namethatgiphyapi.herokuapp.com'
+// var myLocal = 'http://localhost:3000'
+var myLocal = 'https://namethatgiphyapi.herokuapp.com'
 
 
 app.service('gifCall', ['$http', function($http){
