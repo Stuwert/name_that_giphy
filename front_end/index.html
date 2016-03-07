@@ -2,26 +2,31 @@
 <html ng-app="guessdagiph">
   <head>
     <meta charset="utf-8">
-    <title>Giphy Speed Run</title>
+    <title></title>
     <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.15/css/bulma.min.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
   </head>
-  <body style='background-color:#000' ng-controller="ParentController">
+  <body ng-controller="ParentController">
     <base href='/'>
-    <div class="container">
-      <a ng-show='isLoggedIn' href="/logout">Log Out</a>
-        <div id='mainContainer' class='notification'>
-          <h1 class="title is-text-centered" style='color:#FFB855'>
+    <!-- <a href="/logout" ng-show='isLoggedIn'>LogOut</a> -->
+    <section class='hero is-primary is-dark'>
+      <div class="hero-content">
+        <div class="container">
+          <h1 class='title'>
             Giphy Run
           </h1>
           <h3 class="subtitle is-text-centered">
             How long can you survive the internet meme thunderdome?
           </h3>
-
         </div>
-    <div ng-view class='is-text-centered'></div>
-  </div>
+      </div>
+    </section>
+    <section class='section'>
+      <div ng-view class="container is-clearfix">
+
+      </div>
+    </section>
 
   </body>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
