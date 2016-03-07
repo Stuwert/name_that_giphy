@@ -24,6 +24,7 @@ router.post('/signup', function(req, res, next){
 
 
 router.post('/signin', function(req, res, next){
+  console.log(req.body.username);
   Users().where('username', req.body.username).first().then(function(result){
     if(result && bcrypt.compareSync(req.body.password, result.password)){
       res.json({

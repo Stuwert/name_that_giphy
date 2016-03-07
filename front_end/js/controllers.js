@@ -58,6 +58,7 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
 
  app.controller('UserController',  ['$scope', 'userService', '$location', '$routeParams', 'gameService', function($scope, userService, $location, $routeParams, gameService ){
   $scope.createUser = function(){
+    console.log('It hit');
     userService.createUser($scope.newUser).then(function(response){
       if(response.status === 200){
         localStorage.setItem('giphyRunToken', response.data.token)
@@ -72,6 +73,7 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
   }
   $scope.signIn = function(){
     userService.signIn($scope.user).then(function(response){
+      console.log("It hit");
       if(response.status === 200){
         localStorage.setItem('giphyRunToken', response.data.token);
         localStorage.setItem('giphyRunUserName', $scope.user.username);
