@@ -1,3 +1,7 @@
+app.controller('ParentController', ['$scope', function($scope){
+  $scope.isLoggedIn = localStorage.getItem('giphyRunUserName')
+}])
+
 app.controller('SearchController', ['$scope', 'gifCall', '$location', 'gameService', function($scope, gifCall, $location, gameService){
   $scope.searchForAGif = function(){
     if(gameService.hasWord($scope.searchTerm)){
@@ -38,18 +42,31 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
 
 
 app.controller('GameOverController',  ['$scope', 'gameService', function($scope, gameService){
+  gameService.clearWordsUsed();
+  if($scope.$parent.isLoggedIn){
+    gameService.setScore($scope.$parent.isLoggedIn)
+  }
  $scope.showSignUp = function(){
-   return 'views/options/signmeup.html'
+   if ($scope.$parent.isLoggedIn){
+    return 'views/options/again.html'
+   }else{
+    return 'views/options/signmeup.html'
+   }
  }
 
  }])
 
- app.controller('UserController',  ['$scope', 'userService', '$location', '$routeParams', function($scope, userService, $location, $routeParams ){
+ app.controller('UserController',  ['$scope', 'userService', '$location', '$routeParams', 'gameService', function($scope, userService, $location, $routeParams, gameService ){
   $scope.createUser = function(){
     userService.createUser($scope.newUser).then(function(response){
       if(response.status === 200){
         localStorage.setItem('giphyRunToken', response.data.token)
-        $location.path('/users/' + $scope.newUser.username)
+        localStorage.setItem('giphyRunUserName', $scope.newUser.username)
+        $scope.$parent.isLoggedIn = $scope.newUser.username;
+        gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
+          console.log(response);
+          $location.path('/users/' + $scope.newUser.username)
+        })
       }
     })
   }
@@ -57,7 +74,12 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
     userService.signIn($scope.user).then(function(response){
       if(response.status === 200){
         localStorage.setItem('giphyRunToken', response.data.token);
-        $location.path('/users/' + $scope.user.username);
+        localStorage.setItem('giphyRunUserName', $scope.user.username);
+        $scope.$parent.isLoggedIn = $scope.user.username;
+        gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
+          console.log(response);
+          $location.path('/users/' + $scope.user.username);
+        })
       }
     })
   }
@@ -69,4 +91,10 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
    }, function(response){
      $location.path('/signup')
    })
+ }])
+
+ app.controller('LogOutController', ['$scope', '$location', function($scope, $location){
+   $scope.$parent.isLoggedIn = false;
+   localStorage.removeItem('giphyRunToken');
+   localStorage.removeItem('giphyRunUserName')
  }])

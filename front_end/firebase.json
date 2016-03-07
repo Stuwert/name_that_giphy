@@ -1,12 +1,6 @@
 {
-  "firebase": "guessdagiph",
+  "firebase": "GuessThatGiphy",
   "public": ".",
-  "rewrites" : [
-    {
-      "source" : "**/**/**",
-      "destination": "/index.html"
-    }
-  ],
   "ignore": [
     "firebase.json",
     "**/.*",

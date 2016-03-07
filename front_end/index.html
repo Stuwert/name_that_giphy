@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.15/css/bulma.min.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'>
   </head>
-  <body style='background-color:#000'>
+  <body style='background-color:#000' ng-controller="ParentController">
     <base href='/'>
     <div class="container">
+      <a ng-show='isLoggedIn' href="/logout">Log Out</a>
         <div id='mainContainer' class='notification'>
           <h1 class="title is-text-centered" style='color:#FFB855'>
             Giphy Run
