@@ -73,7 +73,6 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
   }
   $scope.signIn = function(){
     userService.signIn($scope.user).then(function(response){
-      console.log(response);
       if(response.status === 200){
         localStorage.setItem('giphyRunToken', response.data.token);
         localStorage.setItem('giphyRunUserName', $scope.user.username);
