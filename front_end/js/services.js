@@ -6,7 +6,9 @@ var theCall = 'http://localhost:3000'
 app.service('gifCall', ['$http', function($http){
   var that = this;
   this.gifArray = [];
+  this.searchTerm;
   this.searchForAGif = function(searchTerm){
+    that.searchTerm = searchTerm;
     return $http.get(theCall + "/api/gif/" + searchTerm)
   }
 

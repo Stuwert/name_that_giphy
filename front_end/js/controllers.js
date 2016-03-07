@@ -22,6 +22,7 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
   $scope.gifs = gifCall.gifArray;
   $scope.score = gameService.score;
   $scope.isSelected;
+  $scope.searchTerm = gifCall.searchTerm;
 
   $scope.toggleSelected = function(item){
     $scope.isSelected = item;

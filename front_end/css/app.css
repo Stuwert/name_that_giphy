@@ -7,10 +7,16 @@
   justify-content: space-around;
   align-items: center;
   overflow: none;
+  border-radius: 10px;
 }
 
 
 .selected{
+  background-color: #FF6800;
+  box-shadow: inset 0px 0px 50px #000000;
+}
+
+.answer:hover{
   background-color: #FF6800;
 }
 
