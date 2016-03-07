@@ -21,14 +21,17 @@ router.get('/:username', function(req, res, next){
 
 router.post('/:username', function(req, res, next){
   Users().where('users.username', req.params.username).then(function(user){
-    console.log(user);
-    Scores().insert({
-      user_id: user[0].id,
-      time: knex.fn.now(),
-      score: req.body.score,
-    }).then(function(){
-      res.status(200).json('It worked!')
-    })
+    if(user.length > 0){
+      Scores().insert({
+        user_id: user[0].id,
+        time: knex.fn.now(),
+        score: req.body.score,
+      }).then(function(){
+        res.status(200).json('It worked!')
+      })
+    }else{
+      res.status(404).json('Not Found!')
+    }
   })
 
 })

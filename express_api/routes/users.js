@@ -31,9 +31,8 @@ router.post('/signin', function(req, res, next){
         token: result.JWT,
         message: 'Success!',
       })
-    }
-    else{
-      res.json({message: 'Fail!'})
+    }else{
+      res.status(400).json({message: 'Fail!'})
     }
   })
 })
