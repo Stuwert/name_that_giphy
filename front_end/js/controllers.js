@@ -20,7 +20,6 @@ app.controller('SearchController', ['$scope', 'gifCall', '$location', 'gameServi
 
 app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location', function($scope, gifCall, gameService, $location){
   $scope.gifs = gifCall.gifArray;
-  console.log($scope.gifs);
   $scope.score = gameService.score;
   $scope.isSelected;
 
