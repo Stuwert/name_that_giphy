@@ -1,7 +1,13 @@
 <form ng-submit='user.$valid && signIn()' name='user' novalidate>
-  <label for="username">Username</label>
-  <input type="text" placeholder="Enter username" ng-model='user.username' id='username' required>
-  <label for="password">Password</label>
-  <input type="password" placeholder="Enter password" ng-model='user.password' id='password' required>
-  <button class='button is-large' type='submit'>Sign In</button>
+  <p class='control'>
+    <label class='label' for="username">Username</label>
+    <input class='input' type="text" placeholder="Enter username" ng-model='user.username' id='username' required>
+  </p>
+  <p class='control'>
+    <label class='label' for="password">Password</label>
+    <input class='input' type="password" placeholder="Enter password" ng-model='user.password' id='password' required>
+  </p>
+  <p class='control'>
+    <button class='button is-primary' type='submit'>Sign In</button>
+  </p>
 </form>

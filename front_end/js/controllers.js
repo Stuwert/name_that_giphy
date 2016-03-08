@@ -39,17 +39,20 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
     }
   }
 
-   $scope.add5Seconds = function () {
-     $scope.$broadcast('timer-add-cd-seconds', 5);
-   }
+  //  $scope.add5Seconds = function () {
+  //    $scope.$broadcast('timer-add-cd-seconds', 5);
+  //  }
 
 }])
 
 
 app.controller('GameOverController',  ['$scope', 'gameService', function($scope, gameService){
   gameService.clearWordsUsed();
+  $scope.score = gameService.score;
   if($scope.$parent.isLoggedIn){
-    gameService.setScore($scope.$parent.isLoggedIn)
+    gameService.setScore($scope.$parent.isLoggedIn).then(function(){
+      gameService.resetScore();
+    })
   }
  $scope.showSignUp = function(){
    if ($scope.$parent.isLoggedIn){
@@ -70,7 +73,7 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
         localStorage.setItem('giphyRunUserName', $scope.newUser.username)
         $scope.$parent.isLoggedIn = $scope.newUser.username;
         gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
-          console.log(response);
+          gameService.resetScore();
           $location.path('/users/' + $scope.newUser.username)
         })
       }
@@ -83,8 +86,9 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
         localStorage.setItem('giphyRunUserName', $scope.user.username);
         $scope.$parent.isLoggedIn = $scope.user.username;
         gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
-          console.log(response);
+          gameService.resetScore();
           $location.path('/users/' + $scope.user.username);
+
         })
       }
     }, function(response){

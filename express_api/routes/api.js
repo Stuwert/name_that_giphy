@@ -18,7 +18,7 @@ router.get('/gif/:searchTerm', function(req, res, next) {
     });
   }))
 
-  for(var i=0; i<3; i++){
+  for(var i=0; i<2; i++){
     promeesies.push(
       new Promise (function(resolve, reject){
         unirest.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='+req.params.searchTerm)
