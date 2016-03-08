@@ -2,7 +2,7 @@
 <html ng-app="guessdagiph">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Guess The Giphy</title>
     <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.15/css/bulma.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -10,7 +10,7 @@
   </head>
   <body ng-controller="ParentController">
     <base href='/'>
-    <section class='hero is-primary is-dark'>
+    <section class='hero is-dark'>
       <div class="hero-content">
         <div class="container">
           <h1 class='title'>
@@ -21,10 +21,10 @@
           </h3>
           <nav class='navbar'>
             <div class="navbar-item">
-              <a ng-show='!isLoggedIn' class='link button is-primary' href="/signin">Sign In</a>
+              <a ng-show='!isLoggedIn' class='link button is-dark' href="/signin">Sign In</a>
             </div>
             <div class="">
-              <a ng-show='isLoggedIn' class='link button is-primary' href="/logout">Log Out</a>
+              <a ng-show='isLoggedIn' class='link button is-dark' href="/logout">Log Out</a>
             </div>
           </nav>
         </div>
