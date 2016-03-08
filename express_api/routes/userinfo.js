@@ -14,7 +14,7 @@ router.get('/:username', function(req, res, next){
 })
 
 router.get('/:username', function(req, res, next){
-  knex.from('users').join('scores', 'users.id', 'scores.user_id').where('users.username', req.params.username).column('score').orderBy('score', 'desc').then(function(response){
+  knex.from('users').join('scores', 'users.id', 'scores.user_id').where('users.username', req.params.username).orderBy('score', 'desc').then(function(response){
     // response.words_used = JSON.parse(response.words_used)
     console.log(response);
     res.json(response);
@@ -22,7 +22,7 @@ router.get('/:username', function(req, res, next){
 })
 
 router.post('/:username', function(req, res, next){
-  console.log(req.body.words_used);
+  console.log(req.body);
   Users().where('users.username', req.params.username).then(function(user){
     if(user.length > 0){
       Scores().insert({

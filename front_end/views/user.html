@@ -2,10 +2,10 @@
   <h2 class='subtitle'>{{isLoggedIn}}'s High Scores</h2>
 </div>
 
-<table>
+<table class='table is-bordered is-striped'>
   <thead>
     <td>
-      Time
+      Date
     </td>
     <td>
       Scores
@@ -17,7 +17,7 @@
   <tbody>
     <tr ng-repeat= 'information in scores'>
       <td>
-        {{information.time}}
+        {{information.time | date: 'shortDate'}}
       </td>
       <td>
         {{information.score}}
