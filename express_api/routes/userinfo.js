@@ -22,8 +22,8 @@ router.get('/:username', function(req, res, next){
 })
 
 router.post('/:username', function(req, res, next){
-  console.log(req.body);
   Users().where('users.username', req.params.username).then(function(user){
+    console.log(user);
     if(user.length > 0){
       Scores().insert({
         user_id: user[0].id,

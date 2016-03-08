@@ -11,8 +11,8 @@ router.get('/gif/:searchTerm', function(req, res, next) {
   var rezults = [];
   var promeesies = [];
 
- unirest.get('http://api.wordnik.com:80/v4/words.json/randomWords?hasDictionaryDef=false&includePartOfSpeech=proper-noun&minCorpusCount=350&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=1&api_key=97d94b0b7779a50ac900e04879302f1c70b3d0fa7b6102f20')
-  .end(function(words){
+ unirest.get('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&includePartOfSpeech=proper-noun&minCorpusCount=350&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=97d94b0b7779a50ac900e04879302f1c70b3d0fa7b6102f20')
+  .end(function(word){
     for(var i = 0; i <3; i ++){
       promeesies.push(new Promise (function(resolve, reject){
         unirest.get('http://api.giphy.com/v1/gifs/random?tag='+req.params.searchTerm+'&api_key=dc6zaTOxFJmzC&limit=1')
@@ -23,7 +23,7 @@ router.get('/gif/:searchTerm', function(req, res, next) {
     }
     promeesies.push(
       new Promise (function(resolve, reject){
-        unirest.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='+words.body.word)
+        unirest.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='+word.body.word)
         .end(function (response) {
           resolve(response);
         });

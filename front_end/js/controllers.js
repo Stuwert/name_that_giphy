@@ -56,8 +56,11 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
   $scope.score = gameService.score;
   if($scope.$parent.isLoggedIn && gameService.score > 0){
     gameService.setScore($scope.$parent.isLoggedIn).then(function(){
+      console.log('score reseting');
       gameService.resetScore();
       gameService.clearWordsUsed();
+    }, function(response){
+      console.log("is this an error? ", response);
     })
   }
  $scope.showSignUp = function(){
