@@ -10,7 +10,6 @@
   border-radius: 10px;
 }
 
-
 .selected{
   background-color: #FF6800;
   box-shadow: inset 0px 0px 50px #000000;
@@ -20,21 +19,14 @@
   background-color: #FF6800;
 }
 
-.container{
-  height: 500px;
-  width: 500px;
-  background-color: #000;
-}
-
 *{
   font-family: 'Poppins', sans-serif;
 }
 
-#mainContainer{
-  background-color: #000;
-  padding: 40px;
-}
-
 body{
   height: 1000px;
+}
+
+input{
+  text-align: center;
 }

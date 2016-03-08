@@ -18,7 +18,7 @@ app.controller('SearchController', ['$scope', 'gifCall', '$location', 'gameServi
 }])
 
 
-app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location', function($scope, gifCall, gameService, $location){
+app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location', '$broadcast', function($scope, gifCall, gameService, $location, $broadcast){
   $scope.gifs = gifCall.gifArray;
   $scope.score = gameService.score;
   $scope.isSelected;
@@ -38,6 +38,12 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
       $location.path('/gameover')
     }
   }
+
+   $scope.add5Seconds = function () {
+     $scope.$broadcast('timer-add-cd-seconds', 5);
+   }
+
+
 }])
 
 
@@ -73,7 +79,6 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
   }
   $scope.signIn = function(){
     userService.signIn($scope.user).then(function(response){
-      console.log("It hit");
       if(response.status === 200){
         localStorage.setItem('giphyRunToken', response.data.token);
         localStorage.setItem('giphyRunUserName', $scope.user.username);
@@ -83,6 +88,9 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
           $location.path('/users/' + $scope.user.username);
         })
       }
+    }, function(response){
+      console.log("Didn't work");
+      console.log($scope.$parent.isLoggedIn);
     })
   }
  }])

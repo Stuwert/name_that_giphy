@@ -23,6 +23,7 @@ app.service('gameService', ['$http', function($http){
   this.score = 0;
   var that = this;
   this.incrementScore = function(){
+    //put timer in here, everytime score is incremeted restart timer
     that.score++;
   }
   this.resetScore = function(){
@@ -51,6 +52,14 @@ app.service('gameService', ['$http', function($http){
     var token = localStorage.getItem('giphyRunToken');
     return $http.post(theCall + '/userinfo/' + username, {'score' : that.score}, {headers: {'token': token }})
   }
+
+
+
+  //$scope.timer = function()
+  // everytime score update timer
+  //this.timer = 5 secs
+  // if timer =0 stop game shift location
+  //
 
 }])
 
