@@ -1,9 +1,15 @@
 <form ng-submit='newUser.$valid && createUser()' name='newUser' novalidate>
-  <label for="username">Username</label>
-  <input type="text" placeholder="Enter username" ng-model='newUser.username' id='username' required>
-  <label for="password">Password</label>
-  <input type="password" placeholder="Enter password" ng-model='newUser.password' id='password' required>
-  <label for="email">Email</label>
-  <input type="email" placeholder="Enter Email" ng-model='newUser.email' id='email' required>
-  <button  class='button is-large' type='submit'>Sign Up</button>
+  <p class='container'>
+    <label class='label' for="username">Username</label>
+    <input class='input' type="text" placeholder="Enter username" ng-model='newUser.username' id='username' required>
+  </p>
+  <p class='container'>
+    <label class='label' for="password">Password</label>
+    <input class='input' type="password" placeholder="Enter password" ng-model='newUser.password' id='password' required>
+  </p>
+  <p class='container'>
+    <label class='label' for="email">Email</label>
+    <input type="email" placeholder="Enter Email" ng-model='newUser.email' id='email' required>
+  </p>
+  <button class='button' type='submit'>Sign Up</button>
 </form>

@@ -9,7 +9,6 @@
   </head>
   <body ng-controller="ParentController">
     <base href='/'>
-    <!-- <a href="/logout" ng-show='isLoggedIn'>LogOut</a> -->
     <section class='hero is-primary is-dark'>
       <div class="hero-content">
         <div class="container">
@@ -19,11 +18,19 @@
           <h3 class="subtitle is-text-centered">
             How long can you survive the internet meme thunderdome?
           </h3>
+          <nav class='navbar'>
+            <div class="navbar-item">
+              <a ng-show='!isLoggedIn' class='link button is-primary' href="/signin">Sign In</a>
+            </div>
+            <div class="">
+              <a ng-show='isLoggedIn' class='link button is-primary' href="/logout">Log Out</a>
+            </div>
+          </nav>
         </div>
       </div>
     </section>
     <section class='section'>
-      <div ng-view class="container is-clearfix">
+      <div ng-view class="container is-clearfix is-fluid">
 
       </div>
     </section>

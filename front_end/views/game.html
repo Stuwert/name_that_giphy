@@ -2,7 +2,7 @@
   <h2 class='title is-3'>{{searchTerm}}</h2>
 </div>
 
-<div class='container columns is-clearfix'>
+<div class='container columns is-clearfix is-centered'>
   <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}} column is-4" ng-click='toggleSelected($index)' >
     <img ng-src="{{gif.image}}" width='160' alt="" />
   </div>
