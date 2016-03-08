@@ -44,7 +44,7 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
 app.controller('GameOverController',  ['$scope', 'gameService', function($scope, gameService){
   gameService.clearWordsUsed();
   $scope.score = gameService.score;
-  if($scope.$parent.isLoggedIn){
+  if($scope.$parent.isLoggedIn && gameService.score > 0){
     gameService.setScore($scope.$parent.isLoggedIn).then(function(){
       gameService.resetScore();
     })
@@ -80,11 +80,14 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
         localStorage.setItem('giphyRunToken', response.data.token);
         localStorage.setItem('giphyRunUserName', $scope.user.username);
         $scope.$parent.isLoggedIn = $scope.user.username;
-        gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
-          gameService.resetScore();
+        if(gameService.score > 0){
+          gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
+            gameService.resetScore();
+            $location.path('/users/' + $scope.user.username);
+          })
+        }else{
           $location.path('/users/' + $scope.user.username);
-
-        })
+        }
       }
     }, function(response){
       console.log("Didn't work");
