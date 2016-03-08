@@ -39,3 +39,7 @@ input{
 a{
   color: white;
 }
+
+h1 > a.underline:hover{
+  text-decoration: none;
+}

@@ -48,11 +48,11 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
 
 
 app.controller('GameOverController',  ['$scope', 'gameService', function($scope, gameService){
-  gameService.clearWordsUsed();
   $scope.score = gameService.score;
-  if($scope.$parent.isLoggedIn){
+  if($scope.$parent.isLoggedIn && gameService.score > 0){
     gameService.setScore($scope.$parent.isLoggedIn).then(function(){
       gameService.resetScore();
+      gameService.clearWordsUsed();
     })
   }
  $scope.showSignUp = function(){
@@ -67,7 +67,6 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
 
  app.controller('UserController',  ['$scope', 'userService', '$location', '$routeParams', 'gameService', function($scope, userService, $location, $routeParams, gameService ){
   $scope.createUser = function(){
-    console.log('It hit');
     userService.createUser($scope.newUser).then(function(response){
       if(response.status === 200){
         localStorage.setItem('giphyRunToken', response.data.token)
@@ -75,6 +74,7 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
         $scope.$parent.isLoggedIn = $scope.newUser.username;
         gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
           gameService.resetScore();
+          gameService.clearWordsUsed();
           $location.path('/users/' + $scope.newUser.username)
         })
       }
@@ -86,11 +86,15 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
         localStorage.setItem('giphyRunToken', response.data.token);
         localStorage.setItem('giphyRunUserName', $scope.user.username);
         $scope.$parent.isLoggedIn = $scope.user.username;
-        gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
-          gameService.resetScore();
+        if(gameService.score > 0){
+          gameService.setScore($scope.$parent.isLoggedIn).then(function(response){
+            gameService.resetScore();
+            gameService.clearWordsUsed();
+            $location.path('/users/' + $scope.user.username);
+          })
+        }else{
           $location.path('/users/' + $scope.user.username);
-
-        })
+        }
       }
     }, function(response){
       console.log("Didn't work");
@@ -101,6 +105,7 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
 
  app.controller('UserInfoController', ['$scope', '$location', '$routeParams', 'userService', function($scope, $location,$routeParams, userService){
    userService.getInfo($routeParams.username).then(function(response){
+     console.log(response);
       $scope.scores = response.data
    }, function(response){
      $location.path('/signup')

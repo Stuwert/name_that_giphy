@@ -49,8 +49,9 @@ app.service('gameService', ['$http', function($http){
   }
 
   this.setScore = function(username){
+    console.log(that.wordsUsed);
     var token = localStorage.getItem('giphyRunToken');
-    return $http.post(theCall + '/userinfo/' + username, {'score' : that.score}, {headers: {'token': token }})
+    return $http.post(theCall + '/userinfo/' + username, {'score' : that.score, 'words_used': that.wordsUsed}, {headers: {'token': token }})
   }
 
 
