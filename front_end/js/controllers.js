@@ -39,10 +39,15 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
     }
   }
 
-  //  $scope.add5Seconds = function () {
-  //    $scope.$broadcast('timer-add-cd-seconds', 5);
-  //  }
+  $scope.timerRunning = true;
 
+  $scope.$on('timer-stopped', function(event, data){
+    if (!$scope.isSelected) {
+      $scope.isSelected = getRand(4)
+    }
+    $scope.checkAnswer();
+    $scope.$apply();
+  })
 
 }])
 
@@ -118,3 +123,7 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
    localStorage.removeItem('giphyRunToken');
    localStorage.removeItem('giphyRunUserName')
  }])
+
+ function getRand(n){
+   return Math.trunc(Math.random() * 4);
+ }

@@ -8,9 +8,17 @@
   </div>
 </div>
 
+<div class="timer">
+  <h5>
+    Time Remaining
+  </h5>
+  <h1><timer interval='1000' countdown='6'>{{countdown}}</timer></h1>
+</div>
+
+
 <div class="container">
   <p>
-    Score: {{$parent.score}}
+    Score: {{score}}
   </p>
 
   <a class="button is-danger is large" type='submit' ng-click='checkAnswer()'>

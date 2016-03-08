@@ -53,3 +53,16 @@ form .control > input.ng-dirty.ng-invalid{
   border: 3px solid red;
   background-color: rgba(243, 129, 129, 0.25);
 }
+
+.timer{
+  position: fixed;
+  top: 205px;
+  right: -5px;
+  background-color: #fce473;
+  width: 105px;
+  padding-right: 25px;
+  padding-left: 10px;
+  z-index: 5;
+  color: #7e7239;
+  box-shadow: -4px 4px 2px 2px rgba(0, 0, 0, 0.25);
+}
