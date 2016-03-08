@@ -45,11 +45,11 @@ h1 > a.underline:hover{
 }
 
 
-.control > input.ng-dirty.ng-valid{
+form .control > input.ng-dirty.ng-valid{
   border: 3px solid green;
 }
 
-.control > input.ng-dirty.ng-invalid{
+form .control > input.ng-dirty.ng-invalid{
   border: 3px solid red;
   background-color: rgba(243, 129, 129, 0.25);
 }
