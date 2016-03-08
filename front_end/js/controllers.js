@@ -78,6 +78,8 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
           $location.path('/users/' + $scope.newUser.username)
         })
       }
+    }, function(response){
+      alert('Sign up failed, please try again')
     })
   }
   $scope.signIn = function(){
@@ -97,8 +99,7 @@ app.controller('GameOverController',  ['$scope', 'gameService', function($scope,
         }
       }
     }, function(response){
-      console.log("Didn't work");
-      console.log($scope.$parent.isLoggedIn);
+      alert('Sign in failed, please try again')
     })
   }
  }])

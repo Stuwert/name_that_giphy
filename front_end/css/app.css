@@ -43,3 +43,13 @@ a{
 h1 > a.underline:hover{
   text-decoration: none;
 }
+
+
+.ng-dirty.ng-valid{
+  border: 3px solid green;
+}
+
+input.ng-dirty.ng-invalid{
+  border: 3px solid red;
+  background-color: rgba(243, 129, 129, 0.25);
+}
