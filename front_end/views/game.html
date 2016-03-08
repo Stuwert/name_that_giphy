@@ -1,17 +1,5 @@
 <div class="heading">
   <h2 class='title is-3'>{{searchTerm}}</h2>
-  <!-- <timer countdown="30" interval="1000">
-    Countdown timer:   {{sseconds}}
-    <! <div class="progress progress-striped active {{displayProgressActive}}"style="height: 30px;"> Remaining time : {{countdown}} second{{secondsS}} ({{progressBar}}%). Activity? {{displayProgressActive}} -->
-      <!-- <div class="bar" style="min-width: 2em;width: {{progressBar}}%;"></div> -->
-    <!-- </div> -->
-  </timer> -->
-  <h1>AngularJS - Add Countdown Seconds Example</h1>
-  <h3><timer countdown="10" interval="1000">{{countdown}}</timer></h3>
-  <button ng-click="add5Seconds()">Add 5 Seconds</button>
-
-  <!-- <timer interval="1000" countdown="1000">{{countdown}}</timer></div> -->
-
 <div class='container columns is-clearfix'>
   <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}} column is-4" ng-click='toggleSelected($index)' >
     <img ng-src="{{gif.image}}" width='160' alt="" />

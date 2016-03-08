@@ -18,7 +18,7 @@ app.controller('SearchController', ['$scope', 'gifCall', '$location', 'gameServi
 }])
 
 
-app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location', '$broadcast', function($scope, gifCall, gameService, $location, $broadcast){
+app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location',  function($scope, gifCall, gameService, $location){
   $scope.gifs = gifCall.gifArray;
   $scope.score = gameService.score;
   $scope.isSelected;
@@ -39,9 +39,9 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
     }
   }
 
-   $scope.add5Seconds = function () {
-     $scope.$broadcast('timer-add-cd-seconds', 5);
-   }
+  //  $scope.add5Seconds = function () {
+  //    $scope.$broadcast('timer-add-cd-seconds', 5);
+  //  }
 
 
 }])
