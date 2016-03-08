@@ -10,13 +10,18 @@
   border-radius: 10px;
 }
 
+img{
+  max-width: 300px;
+  max-height: 300px;
+}
+
 .selected{
-  background-color: #FF6800;
-  box-shadow: inset 0px 0px 50px #000000;
+  background-color: #DFEBED;
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
 .answer:hover{
-  background-color: #FF6800;
+  background-color: #DFEBED;
 }
 
 *{
@@ -29,4 +34,8 @@ body{
 
 input{
   text-align: center;
+}
+
+a{
+  color: white;
 }

@@ -1,9 +1,13 @@
-<h1>GAME OVER</h1>
+<div class="heading">
+  <h2 class='title'>GAME OVER</h2>
+</div>
 
 <h3>
-  Your Score
+  Your Score {{score}}
 </h3>
 
-<ng-include src='showSignUp()'>
-
-</ng-include>
+<div class="card">
+  <div class="card-content">
+    <ng-include src='showSignUp()'></ng-include>
+  </div>
+</div>
