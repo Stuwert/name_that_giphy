@@ -4,21 +4,21 @@ app.controller('ParentController', ['$scope', function($scope){
 
 app.controller('SearchController', ['$scope', 'gifCall', '$location', 'gameService', function($scope, gifCall, $location, gameService){
   $scope.searchForAGif = function(){
-    if(gameService.hasWord($scope.searchTerm)){
-      alert("Don't game the system mammajama.")
-    }else{
-      gameService.addWord($scope.searchTerm);
-      gifCall.searchForAGif($scope.searchTerm).then(function(payload){
-        gifCall.setGifs(payload.data);
+    // if(gameService.hasWord($scope.searchTerm)){
+    //   alert("Don't game the system mammajama.")
+    // }else{
+    //   gameService.addWord($scope.searchTerm);
+    //   gifCall.searchForAGif($scope.searchTerm).then(function(payload){
+    //     gifCall.setGifs(payload.data);
         $location.path('/game')
-      });
-    }
+    //   });
+    // }
   }
   $scope.score = gameService.score;
 }])
 
 
-app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location', '$broadcast', function($scope, gifCall, gameService, $location, $broadcast){
+app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location', function($scope, gifCall, gameService, $location){
   $scope.gifs = gifCall.gifArray;
   $scope.score = gameService.score;
   $scope.isSelected;
@@ -42,7 +42,6 @@ app.controller('GameController', ['$scope', 'gifCall', 'gameService', '$location
    $scope.add5Seconds = function () {
      $scope.$broadcast('timer-add-cd-seconds', 5);
    }
-
 
 }])
 
