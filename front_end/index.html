@@ -2,7 +2,7 @@
 <html ng-app="guessdagiph">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Guess The Giphy</title>
     <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.15/css/bulma.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -10,21 +10,21 @@
   </head>
   <body ng-controller="ParentController">
     <base href='/'>
-    <section class='hero is-primary is-dark'>
+    <section class='hero is-dark'>
       <div class="hero-content">
         <div class="container">
           <h1 class='title'>
-            Giphy Run
+            <a class='nounderline' href="/">{{ isLoggedIn ? isLoggedIn : "Giphy Run"}}</a>
           </h1>
           <h3 class="subtitle is-text-centered">
             How long can you survive the internet meme thunderdome?
           </h3>
           <nav class='navbar'>
             <div class="navbar-item">
-              <a ng-show='!isLoggedIn' class='link button is-primary' href="/signin">Sign In</a>
+              <a ng-show='!isLoggedIn' class='link button is-dark' href="/signin">Sign In</a>
             </div>
             <div class="">
-              <a ng-show='isLoggedIn' class='link button is-primary' href="/logout">Log Out</a>
+              <a ng-show='isLoggedIn' class='link button is-dark' href="/logout">Log Out</a>
             </div>
           </nav>
         </div>
@@ -37,12 +37,17 @@
     </section>
 
   </body>
+
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" charset="utf-8"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
+  <script src="js/angular-timer.js" charset="utf-8"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
+  <script src="js/humanize-duration.js" charset="utf-8"></script>
+  <script src="js/moment.js" charset="utf-8"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
   <script type="./bower_components/angular-timer/app/js/_timer.js"></script>
   <script type="./bower_components/momentjs/min/moment.min.js"></script>
   <script type="./bower_components/momentjs/min/locales.min.js"></script>

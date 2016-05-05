@@ -1,4 +1,4 @@
-var app = angular.module('guessdagiph', ['ngRoute', 'ngResource'])
+var app = angular.module('guessdagiph', ['ngRoute', 'ngResource', 'timer'])
 
 app.config(function($routeProvider, $locationProvider){
   $routeProvider

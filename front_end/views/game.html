@@ -1,17 +1,24 @@
 <div class="heading">
-  <h2 class='title is-3'>{{searchTerm}}</h2>
-
+  <h2 class='title is-3'>One of these isn't {{searchTerm}}</h2>
 </div>
 
 <div class='container columns is-clearfix is-centered'>
-  <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}} column is-4" ng-click='toggleSelected($index)' >
+  <div ng-repeat='gif in gifs' ng-class='isSelected === $index ? "selected" : "" ' class="answer {{gif.class}} column is-3" ng-click='toggleSelected($index)' >
     <img ng-src="{{gif.image}}" width='160' alt="" />
   </div>
 </div>
 
+<div class="timer">
+  <h5>
+    Time Remaining
+  </h5>
+  <h1><timer interval='1000' countdown='10'>{{countdown}}</timer></h1>
+</div>
+
+
 <div class="container">
   <p>
-    Score: {{$parent.score}}
+    Score: {{score}}
   </p>
 
   <a class="button is-danger is large" type='submit' ng-click='checkAnswer()'>

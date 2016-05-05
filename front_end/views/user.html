@@ -1,7 +1,32 @@
-<h2>{{username}}</h2>
+<div class="heading">
+  <h2 class='subtitle'>{{isLoggedIn}}'s High Scores</h2>
+</div>
 
-<ol>
-  <li ng-repeat='score in scores'>{{score.score}}</li>
-</ol>
+<table class='table is-bordered is-striped'>
+  <thead>
+    <td>
+      Date
+    </td>
+    <td>
+      Scores
+    </td>
+    <td>
+      Words Used
+    </td>
+  </thead>
+  <tbody>
+    <tr ng-repeat= 'information in scores'>
+      <td>
+        {{information.time | date: 'shortDate'}}
+      </td>
+      <td>
+        {{information.score}}
+      </td>
+      <td>
+        {{information.words_used}}
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <a class='button is-large' href="/">Restart</a>
