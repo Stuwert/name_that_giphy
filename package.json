@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./express_api/bin/www",
-    "test" : "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "dependencies": {
     "bcrypt": "^0.8.5",
